@@ -8,7 +8,8 @@ import android.media.MediaPlayer;
  */
 public class AudioPlayer {
 
-    private MediaPlayer mPlayer;
+    public MediaPlayer mPlayer;
+
 
     public void stop() {
         if (mPlayer !=null){
@@ -21,12 +22,23 @@ public class AudioPlayer {
         stop();
         mPlayer = MediaPlayer.create(c, R.raw.birthday_song);
 
-        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
-        {
-            public void onCompletion (MediaPlayer mp){
+        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            public void onCompletion(MediaPlayer mp) {
                 stop();
             }
         });
         mPlayer.start();
     }
+
+    public  void pause() {
+        if (!mPlayer.isPlaying()){
+            mPlayer.start();
+        }
+        else
+        {
+            mPlayer.pause();
+        }
+
+    }
+
 }

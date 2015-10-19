@@ -14,6 +14,13 @@ public class BirthdayFragment extends Fragment {
 
     private Button mPlayButton;
     private Button mStopButton;
+    private Button mPauseButton;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState){
@@ -23,6 +30,15 @@ public class BirthdayFragment extends Fragment {
         mPlayButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 mPlayer.play(getActivity());
+            }
+        });
+
+
+        mPauseButton = (Button) v.findViewById(R.id.pauseButton);
+        mPauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               mPlayer.pause();
             }
         });
 
